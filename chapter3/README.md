@@ -41,7 +41,7 @@ root@ubuntu:/home/dockerfiles/httpserver#
 
 
 codehub上的镜像信息：  
-![avatar](https://github.com/tglgame/CNCF_TEST/blob/main/chapter3/dockerhub-httpserver.PNG)
+![avatar](https://github.com/tglgame/CNCF_TEST/raw/main/chapter3/dockerhub-httpserver.PNG)
 
 
 client访问示例：
