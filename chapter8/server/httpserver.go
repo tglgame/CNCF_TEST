@@ -24,7 +24,6 @@ type configuration struct {
 
 func ReadConfig() *configuration {
 	config_file := os.Getenv("CONFIG_FILE_PATH")
-	config_file = "conf.json"
 	logger.Info("Read config file: ", config_file)
 	file, _ := os.Open(config_file)
 	defer file.Close()
