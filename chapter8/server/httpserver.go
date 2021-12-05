@@ -91,7 +91,8 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 	w.WriteHeader(200)
 
 	logger.Info("=====================")
-	io.WriteString(w, "hello, world!\n")
+	hostname, _ := os.Hostname()
+	io.WriteString(w, fmt.Sprintf("%s, hello world!\n", hostname))
 }
 
 func Healthz(w http.ResponseWriter, req *http.Request) {
