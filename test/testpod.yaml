@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tpod
+spec:
+  containers:
+  - image: nginx
+    imagePullPolicy: IfNotPresent
+    name: web-server
+    volumeMounts:
+    - name: config
+      mountPath: /tmp/whole-fortune-config-volume
+      readOnly: true
+    ports:
+      - containerPort: 80
+        name: http
+        protocol: TCP
+  volumes:
+  - name: config
+    configMap:
+      name: hscm
+
