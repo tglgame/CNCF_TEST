@@ -30,4 +30,8 @@
 
 # 遗留问题：
 在ingress里加入了secret之后，并不能通过https进行访问，还不清楚原因是什么
-
+```
+spec:
+  tls:
+  - secretName: httpsecret
+```
