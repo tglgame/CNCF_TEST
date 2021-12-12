@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: http-ing
+  namespace: gracehttp
+spec:
+  ingressClassName: nginx
+  tls:
+  - secretName: httpsecret
+  rules:
+  - host: grace.example.com
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service: 
+            name: grace 
+            port: 
+              number: 80
+

@@ -1,0 +1,5 @@
+{
+    "logpath": "/var/httpserver/logs",
+    "logLevel": 1,
+    "port": 80
+}
