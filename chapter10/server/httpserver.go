@@ -17,7 +17,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	logger "github.com/sirupsen/logrus"
 
-	"github.com/CNCF_TEST/chapter10/metrics"
+	"github.com/tglgame/CNCF_TEST/chapter10/metrics"
 )
 
 type configuration struct {
