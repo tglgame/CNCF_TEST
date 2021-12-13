@@ -124,6 +124,7 @@ func main() {
 	logger.Info(conf)
 	logger.Info(conf.LogPath, conf.LogLevel, conf.Port)
 	logger.Info("**********************")
+	metrics.Register()
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/hello", HelloServer)
