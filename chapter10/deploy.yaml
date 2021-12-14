@@ -12,7 +12,7 @@ spec:
     spec:
        terminationGracePeriodSeconds: 2
        containers:
-       - image: tglgame/gracehttpserver:v2
+       - image: tglgame/gracehttpserver:v4
          name: gracecontainer
          lifecycle:
            postStart: 
