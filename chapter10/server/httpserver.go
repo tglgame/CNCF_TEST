@@ -89,7 +89,7 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 	defer timer.ObserveTotal()
 	// 随机延迟0-2秒
 	delay := randInt(0, 2)
-	time.Sleep(time.Millisecond * time.Duration(delay))
+	time.Sleep(time.Second * time.Duration(delay))
 
 	clientIp := GetRemoteIp(req)
 	logger.Info("client addr: ", clientIp)
