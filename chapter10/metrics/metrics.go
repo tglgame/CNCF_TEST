@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
-
 )
 
 func Register() {
@@ -27,7 +26,6 @@ func NewTimer() *ExecutionTimer {
 var (
 	functionLatency = CreateExecutionTimeMetric(MetricsNamespace,
 		"Time spent.")
-
 )
 
 // NewExecutionTimer provides a timer for admission latency; call ObserveXXX() on it to measure
@@ -52,7 +50,8 @@ func CreateExecutionTimeMetric(namespace string, help string) *prometheus.Histog
 			Namespace: namespace,
 			Name:      "execution_latency_seconds",
 			Help:      help,
-			Buckets: prometheus.ExponentialBuckets(0.001, 2, 15),
+			Buckets:   prometheus.DefBuckets,
+			// Buckets: prometheus.ExponentialBuckets(0.001, 2, 15),
 		}, []string{"step"},
 	)
 }
