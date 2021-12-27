@@ -13,7 +13,7 @@
 
 
 # 验证流程：  
-1. K8S环境是在自己机器上搭建了三台虚拟机，ingress nginx使用的nodeport，并加入了externalIPs属性（[参考的这里](）https://kubernetes.github.io/ingress-nginx/deploy/baremetal/#over-a-nodeport-service))
+1. K8S环境是在自己机器上搭建了三台虚拟机，ingress nginx使用的nodeport，并加入了externalIPs属性（[参考的这里](https://kubernetes.github.io/ingress-nginx/deploy/baremetal/#over-a-nodeport-service))
 2. 创建 namespace gracehttp
 3. 创建limitrange 和 resourcequota对象
 4. 创建ingress 对象  
