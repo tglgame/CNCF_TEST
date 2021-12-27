@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: grace
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: grace
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gracedeploy
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: grace
+    spec:
+       terminationGracePeriodSeconds: 2
+       containers:
+       - image: tglgame/gracehttpserver:v4
+         name: gracecontainer
+         resources:
+           requests:
+             cpu: "100m"
+         lifecycle:
+           postStart: 
+             exec:
+               command: ["/bin/sh", "-c", "echo hello from poststart handler > /usr/share/msg"]
+           preStop:
+             exec:
+               command: ["/bin/sh", "-c", "echo gracefully stop~~~~~"]
+         livenessProbe:
+           httpGet:
+             path: /healthz
+             port: 80
+           initialDelaySeconds: 5
+           periodSeconds: 10
+         startupProbe:
+           httpGet:
+             path: /healthz
+             port: 80
+           failureThreshold: 10
+           initialDelaySeconds: 5
+           periodSeconds: 5
+         volumeMounts:
+         - name: config
+           mountPath: /home/config-file-path
+           readOnly: true
+         env:
+         - name: CONFIG_FILE_PATH
+           valueFrom:
+             configMapKeyRef:
+               name: hscm
+               key: configpath 
+       volumes:
+       - name: config
+         configMap:
+           name: hscm
+  selector:
+    matchLabels:
+      app: grace
+
